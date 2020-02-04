@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private Animator ani;               // 動畫控制器元件
     private Transform target;           // 目標物件
     private LevelManager levelManager;
+    private HpValueManager HpValueManager;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         target = GameObject.Find("目標").transform;
 
         levelManager = FindObjectOfType<LevelManager>();    // 透過類行尋找物件 (場景上只有一個)
+        HpValueManager = GetComponentInChildren<HpValueManager>();
     }
 
     // 固定更新：一秒執行 50 次 - 處理物理行為
@@ -68,5 +70,7 @@ public class Player : MonoBehaviour
     public void Hit(float damage)
     {
         data.hp -= damage;
+        HpValueManager.SetHp(data.hp, data.hpMax);
+        StartCoroutine(HpValueManager.ShowValue(damage, "-", Color.white));
     }
 }
