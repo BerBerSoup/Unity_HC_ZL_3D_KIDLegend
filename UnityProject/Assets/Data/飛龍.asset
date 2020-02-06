@@ -17,3 +17,8 @@ MonoBehaviour:
   attack: 80
   cd: 2.5
   stopDistance: 50
+  attackY: 1.98
+  attackLength: 0
+  attackDelay: 0
+  attackZ: 1.76
+  bulletPower: 1200

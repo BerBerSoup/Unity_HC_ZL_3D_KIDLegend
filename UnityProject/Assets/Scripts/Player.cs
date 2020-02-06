@@ -72,5 +72,12 @@ public class Player : MonoBehaviour
         data.hp -= damage;
         HpValueManager.SetHp(data.hp, data.hpMax);
         StartCoroutine(HpValueManager.ShowValue(damage, "-", Color.white));
+        if (data.hp <= 0) Dead();
+    }
+
+    private void Dead()
+    {
+        ani.SetBool("死亡開關", true);
+        enabled = false;
     }
 }
