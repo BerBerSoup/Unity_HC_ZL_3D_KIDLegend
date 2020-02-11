@@ -12,11 +12,13 @@ public class LevelManager : MonoBehaviour
     public bool autoShowSkill;      // 是否顯示技能
     [Header("是否自動開門")]
     public bool autoOpenDoor;       // 是否自動開門
-    [Header("復活畫面")]
+    [Header("復活畫面,看廣告復活按鈕")]
     public GameObject panelRevival;
+    public Button btnRevival;
 
     private Animator aniDoor;        // 門 (動畫)
     private Image imgCross;          // 轉場
+    private AdManager adManager;
 
     private void Start()
     {
@@ -31,11 +33,9 @@ public class LevelManager : MonoBehaviour
         // 如果 是 自動開門 延遲呼叫 開門方法
         if (autoOpenDoor) Invoke("OpenDoor", 3.5f);
 
-        // 延遲調用("方法名稱"，延遲時間)
-        // Invoke("OpenDoor", 6);
+        adManager = FindObjectOfType<AdManager>();
 
-        // 重複調用("方法名稱"，延遲時間，重複頻率)
-        // InvokeRepeating("OpenDoor", 0, 1.5f);
+        btnRevival.onClick.AddListener(adManager.ShowADRevival);
     }
 
     /// <summary>
@@ -83,5 +83,11 @@ public class LevelManager : MonoBehaviour
             textSecond.text = i.ToString();
             yield return new WaitForSeconds(1);
         }
+    }
+
+    public void HideRevival()
+    {
+        StopCoroutine(ShowRevival());
+        panelRevival.SetActive(false);
     }
 }

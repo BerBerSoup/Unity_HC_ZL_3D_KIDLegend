@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
 
         Vector3 posTarget = new Vector3(target.position.x, transform.position.y, target.position.z);    // 目標座標 = 新 三維向量(目標.X，玩家.Y，目標.Z)
         transform.LookAt(posTarget);                                                                    // 玩家變形.看著(目標座標)
+        if (v == 0 && h == 0) Attack();
     }
 
     /// <summary>
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
     /// <param name="damage">接收的傷害值</param>
     public void Hit(float damage)
     {
+        if (ani.GetBool("死亡開關")) return;
         data.hp -= damage;
         HpValueManager.SetHp(data.hp, data.hpMax);
         StartCoroutine(HpValueManager.ShowValue(damage, "-", Color.white));
@@ -79,5 +81,19 @@ public class Player : MonoBehaviour
     {
         ani.SetBool("死亡開關", true);
         enabled = false;
+        StartCoroutine(levelManager.ShowRevival());
+    }
+    public void Revival()
+    {
+        ani.SetBool("死亡開關", false);
+        enabled = true;
+        data.hp = data.hpMax;
+        HpValueManager.SetHp(data.hp, data.hpMax);
+        levelManager.HideRevival();
+    }
+
+    public void Attack()
+    {
+        ani.SetTrigger("攻擊觸發");
     }
 }
