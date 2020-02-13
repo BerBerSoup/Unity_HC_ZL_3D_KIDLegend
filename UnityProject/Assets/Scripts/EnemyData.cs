@@ -9,6 +9,7 @@ public class EnemyData : ScriptableObject
     public float speed;
     [Header("血量"), Range(100, 5000)]
     public float hp;
+    public float hpMax;
     [Header("攻擊力"), Range(10, 1000)]
     public float attack;
     [Header("冷卻時間"), Range(1, 10)]

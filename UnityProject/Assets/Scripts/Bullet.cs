@@ -12,6 +12,12 @@ public class Bullet : MonoBehaviour
         if (other.name == "鼠王")
         {
             other.GetComponent<Player>().Hit(damage);
+            Destroy(gameObject);
+        }
+        else if (other.name == "敵人")
+        {
+            other.GetComponent<Player>().Hit(damage);
+            Destroy(gameObject);
         }
     }
 
