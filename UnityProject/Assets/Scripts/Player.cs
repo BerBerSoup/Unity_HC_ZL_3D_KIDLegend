@@ -107,10 +107,15 @@ public class Player : MonoBehaviour
         }
         else
         {
+           
+            enemys = FindObjectsOfType<Enemy>();
+            if (enemys.Length == 0)
+            {
+                levelManager.pass();
+                return;
+            }
             timer = 0;
             ani.SetTrigger("攻擊觸發");
-
-            enemys = FindObjectsOfType<Enemy>();
 
             enemysDis = new float[enemys.Length];
             for (int i = 0; i < enemys.Length; i++)
@@ -130,6 +135,7 @@ public class Player : MonoBehaviour
             temp.GetComponent<Rigidbody>().AddForce(transform.forward * data.bulletPower);
             temp.AddComponent<Bullet>();
             temp.GetComponent<Bullet>().damage = data.attack;
+            temp.GetComponent<Bullet>().player = true;
         }
 
     }

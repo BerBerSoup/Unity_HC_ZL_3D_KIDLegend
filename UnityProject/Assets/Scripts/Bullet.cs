@@ -6,17 +6,18 @@ public class Bullet : MonoBehaviour
     /// 子彈的傷害
     /// </summary>
     public float damage;
+    public bool player;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "鼠王")
+        if (!player && other.name == "鼠王")
         {
             other.GetComponent<Player>().Hit(damage);
             Destroy(gameObject);
         }
-        else if (other.name == "敵人")
+        else if (player && other.tag == "敵人" && other.GetComponent<Enemy>())
         {
-            other.GetComponent<Player>().Hit(damage);
+            other.GetComponent<Enemy>().Hit(damage);
             Destroy(gameObject);
         }
     }

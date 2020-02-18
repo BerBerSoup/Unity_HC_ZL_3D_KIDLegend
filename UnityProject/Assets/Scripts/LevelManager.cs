@@ -72,7 +72,10 @@ public class LevelManager : MonoBehaviour
         // 載入下一關
         SceneManager.LoadScene("關卡 2");
     }
-
+    /// <summary>
+    /// 顯示復活畫面
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator ShowRevival()
     {
         panelRevival.SetActive(true);
@@ -84,10 +87,27 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
     }
-
+    /// <summary>
+    /// 關閉復活畫面
+    /// </summary>
     public void HideRevival()
     {
         StopCoroutine(ShowRevival());
         panelRevival.SetActive(false);
     }
+    /// <summary>
+    /// 過關:開門、叫金幣前往玩家
+    /// </summary>
+    public void pass()
+    {
+        OpenDoor();
+
+        Item[] items = FindObjectsOfType<Item>();
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i].pass = true;
+        }
+    }
+
+
 }
