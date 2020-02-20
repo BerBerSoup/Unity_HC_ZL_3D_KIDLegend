@@ -13,6 +13,7 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
+        Physics.IgnoreLayerCollision(10, 10, false);
         aud = GetComponent<AudioSource>();
         player = GameObject.Find("鼠王").transform;
 
@@ -37,7 +38,7 @@ public class Item : MonoBehaviour
             Physics.IgnoreLayerCollision(10, 10);
             transform.position = Vector3.Lerp(transform.position, player.position, 0.8f * Time.deltaTime * 20);
 
-            if (Vector3.Distance(transform.position, player.position)<1.5f&&!aud.isPlaying)
+            if (Vector3.Distance(transform.position, player.position) < 1.5f && !aud.isPlaying)
             {
                 aud.PlayOneShot(sound, 0.3f);
                 Destroy(gameObject, 0.3f);
