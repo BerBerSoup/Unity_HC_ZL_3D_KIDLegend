@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.58154297, g: 0.45190442, b: 0.2927245, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -2937,7 +2937,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2912
+  m_Name: pb_Mesh-16792
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6036,6 +6036,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "\u969C\u7919\u7269 3 _ 2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529046788393909183, guid: d64a077ee58fcee45badba82ccb9937a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2638111503711839570, guid: d64a077ee58fcee45badba82ccb9937a,
         type: 3}
